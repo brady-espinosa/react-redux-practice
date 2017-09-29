@@ -1,24 +1,21 @@
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import { render } from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Landing from './Landing';
+import Search from './Search';
 
-const MyTitle = function(props) {
-  return ce(
-    "div",
-    null,
-    ce("div", { style: { color: props.color } }, props.title),
-  );
-};
+const FourOhFour = () => <h1>404</h1>;
 
-const MyFirstComponent = function() {
-  return ce(
-    "div",
-    null,
+const App = () => (
+  <BrowserRouter>
+    <div className="app">
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route path="/search" component={Search} />
+        <Route component={FourOhFour} />
+      </Switch>
+    </div>
+  </BrowserRouter>
+);
 
-    ce(MyTitle, { title: "Game for Thrones", color: "red" }),
-    ce(MyTitle, { title: "Stranger Things", color: "peru" }),
-    ce(MyTitle, { title: "Rick and Morty" }),
-    ce(MyTitle, { title: "Poop Mcgee" }),
-  );
-};
-
-ReactDOM.render(ce(MyFirstComponent), document.getElementById("app"));
+render(<App />, document.getElementById('app'));
