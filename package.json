@@ -6,7 +6,11 @@
     "watch": "webpack --watch",
     "lint": "eslint **/*.{js,jsx} --quiet",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:update": "jest -u"
+  },
+  "jest": {
+    "snapshotSerializers": ["jest-serializer-enzyme"]
   },
   "dependencies": {
     "axios": "0.16.1",
