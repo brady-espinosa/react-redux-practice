@@ -1,14 +1,18 @@
-import React from 'react';
-import { string } from 'prop-types';
-import styled from 'styled-components';
+// @flow
 
-const Wrapper = styled.div`
+import React from 'react'; // eslint-disable-line
+import styled from 'styled-components'; // eslint-disable-line
+import { Link } from 'react-router-dom'; // eslint-disable-line
+
+const Wrapper = styled(Link)`
   width: 32%;
   border: 2px solid #333;
   border-radius: 4px;
   margin-bottom: 25px;
   padding-right: 10px;
   overflow: hidden;
+  color: black;
+  text-decoration: none;
 `;
 
 const Image = styled.img`
@@ -17,8 +21,8 @@ const Image = styled.img`
   margin-right: 10px;
 `;
 
-const ShowCard = props => (
-  <Wrapper>
+const ShowCard = (props: Show) => (
+  <Wrapper to={`/details/${props.imdbID}`}>
     <Image
       alt={`${props.title} Show Poster`}
       src={`/public/img/posters/${props.poster}`}
@@ -31,10 +35,4 @@ const ShowCard = props => (
   </Wrapper>
 );
 
-ShowCard.propTypes = {
-  poster: string.isRequired,
-  title: string.isRequired,
-  year: string.isRequired,
-  description: string.isRequired,
-};
 export default ShowCard;

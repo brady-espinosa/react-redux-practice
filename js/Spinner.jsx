@@ -1,0 +1,20 @@
+// @flow
+
+import React from 'react'; // eslint-disable-line
+import styled, { keyframes } from 'styled-components'; // eslint-disable-line
+
+const spin = keyframes`
+  from{
+    transfrom: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+const Image = styled.img`animation: ${spin} 4s infinite linear;`;
+
+const Spinner = () => (
+  <Image src="/public/img/loading.png" alt="loading indicator" />
+);
+
+export default Spinner;

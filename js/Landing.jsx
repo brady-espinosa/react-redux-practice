@@ -1,6 +1,8 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Link } from 'react-router-dom';
+// @flow
+
+import React from 'react'; // eslint-disable-line
+import { render } from 'react-dom'; // eslint-disable-line
+import { Link } from 'react-router-dom'; // eslint-disable-line
 
 const Landing = () => (
   <div className="landing">

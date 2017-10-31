@@ -1,27 +1,31 @@
-import React, { Component } from 'react';
-import preload from '../data.json';
-import ShowCard from './ShowCard';
+// @flow
+
+import React, { Component } from 'react'; // eslint-disable-line
+import preload from '../data.json'; // eslint-disable-line
+import ShowCard from './ShowCard'; // eslint-disable-line
+import Header from './Header'; // eslint-disable-line
 
 class Search extends Component {
   state = {
     searchTerm: '',
   };
-  handleSearchTermChange = event => {
+  props: {
+    shows: Array<Show>,
+  };
+  handleSearchTermChange = (
+    event: SyntheticKeyboardEvent & { target: HTMLInputElement },
+  ) => {
     this.setState({ searchTerm: event.target.value });
   };
 
   render() {
     return (
       <div className="search">
-        <header>
-          <h1>Clone Radio</h1>
-          <input
-            onChange={this.handleSearchTermChange}
-            value={this.state.searchTerm}
-            type="text"
-            placeholder="search"
-          />
-        </header>
+        <Header
+          searchTerm={this.state.searchTerm}
+          showSearch
+          handleSearchTermChange={this.handleSearchTermChange}
+        />
         <div>
           {preload.shows
             .filter(
