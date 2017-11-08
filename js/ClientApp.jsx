@@ -2,6 +2,7 @@
 
 import React from 'react'; // eslint-disable-line
 import { render } from 'react-dom'; // eslint-disable-line
+import { Perf } from 'react-addons-perf'; // eslint-disable-line
 import App from './App'; // eslint-disable-line
 
 const renderApp = () => {

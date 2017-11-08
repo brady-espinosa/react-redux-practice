@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'; // eslint-disable-line
+import React, { Component } from 'react'; // eslint-disable-line
 import styled from 'styled-components'; // eslint-disable-line
 import { Link } from 'react-router-dom'; // eslint-disable-line
 
@@ -20,19 +20,26 @@ const Image = styled.img`
   float: left;
   margin-right: 10px;
 `;
-
-const ShowCard = (props: Show) => (
-  <Wrapper to={`/details/${props.imdbID}`}>
-    <Image
-      alt={`${props.title} Show Poster`}
-      src={`/public/img/posters/${props.poster}`}
-    />
-    <div>
-      <h3>{props.title}</h3>
-      <h4>({props.year})</h4>
-      <p>{props.description}</p>
-    </div>
-  </Wrapper>
-);
+class ShowCard extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+  props: Show;
+  render() {
+    return (
+      <Wrapper to={`/details/${this.props.imdbID}`}>
+        <Image
+          alt={`${this.props.title} Show Poster`}
+          src={`/public/img/posters/${this.props.poster}`}
+        />
+        <div>
+          <h3>{this.props.title}</h3>
+          <h4>({this.props.year})</h4>
+          <p>{this.props.description}</p>
+        </div>
+      </Wrapper>
+    );
+  }
+}
 
 export default ShowCard;
